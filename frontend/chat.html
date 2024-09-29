@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Upload Course - LearnFinity</title>
+
+    <!-- Font Awesome CDN link -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+    />
+
+    <!-- Custom CSS file link -->
+    <link rel="stylesheet" href="css/Home.css" />
+
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f4f6f9;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        overflow-x: hidden;
+      }
+
+      .upload-course {
+        padding: 70px 0;
+        text-align: center;
+        background-color: #eef2f7;
+      }
+
+      .upload-course .heading {
+        font-size: 2.5em;
+        color: #333;
+        margin-bottom: 30px;
+        font-weight: 600;
+      }
+
+      .container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      form {
+        max-width: 800px;
+        margin: 0 auto;
+        background: #ffffff;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      form:hover {
+        transform: scale(1.02);
+      }
+
+      form div {
+        margin-bottom: 25px;
+      }
+
+      form label {
+        font-size: 1.1em;
+        color: #333;
+        font-weight: 500;
+      }
+
+      form input[type="text"],
+      form input[type="file"],
+      form textarea,
+      form select {
+        width: 100%;
+        padding: 12px;
+        margin-top: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        outline: none;
+        background-color: #f7f7f7;
+        font-size: 1em;
+        transition: border-color 0.3s ease, background-color 0.3s ease;
+      }
+
+      form input:focus,
+      form textarea:focus,
+      form select:focus {
+        border-color: #007bff;
+        background-color: #fff;
+      }
+
+      form textarea {
+        resize: none;
+        height: 150px;
+      }
+
+      button[type="submit"] {
+        padding: 15px 30px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 50px;
+        font-size: 1.2em;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        outline: none;
+      }
+
+      button[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+
+      .footer {
+        background-color: #222;
+        color: #fff;
+        text-align: center;
+        padding: 15px;
+        font-size: 0.9em;
+        margin-top: 50px;
+      }
+
+      .footer span {
+        color: #007bff;
+      }
+
+      /* Chat styles */
+      .chat-container {
+        display: flex;
+        flex-direction: column;
+        max-width: 800px;
+        margin: 30px auto;
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .chat-messages {
+        flex: 1;
+        overflow-y: auto;
+        height: 300px;
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+      }
+
+      .message {
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 8px;
+      }
+
+      .message.user {
+        background-color: #007bff;
+        color: white;
+        align-self: flex-end;
+      }
+
+      .message.instructor {
+        background-color: #e0e0e0;
+        color: black;
+        align-self: flex-start;
+      }
+
+      .chat-input {
+        display: flex;
+      }
+
+      .chat-input input {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        margin-right: 10px;
+      }
+
+      .chat-input button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+
+      .chat-input button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <section class="flex">
+        <a href="Home.html" class="logo">LearnFinity</a>
+
+        <form action="search.html" method="post" class="search-form">
+          <input
+            type="text"
+            name="search_box"
+            required
+            placeholder="Search courses..."
+            maxlength="100"
+          />
+          <button type="submit" class="fas fa-search"></button>
+        </form>
+
+        <div class="icons">
+          <div id="menu-btn" class="fas fa-bars"></div>
+          <div id="search-btn" class="fas fa-search"></div>
+          <div id="user-btn" class="fas fa-user"></div>
+          <div id="toggle-btn" class="fas fa-sun"></div>
+        </div>
+
+        <div class="profile">
+          <img src="img/pic-1.jpg" class="image" alt="Profile Picture" />
+          <h3 class="name">Omkar Parab</h3>
+          <p class="role">Student</p>
+          <a href="profile.html" class="btn">View Profile</a>
+        </div>
+      </section>
+    </header>
+
+    <div class="side-bar">
+      <div id="close-btn">
+        <i class="fas fa-times"></i>
+      </div>
+
+      <div class="profile">
+        <img src="img/pic-1.jpg" class="image" alt="Profile Picture" />
+        <h3 class="name">Omkar Parab</h3>
+        <p class="role">Student</p>
+        <a href="profile.html" class="btn">View Profile</a>
+      </div>
+
+      <nav class="navbar">
+        <a href="home.html"><i class="fas fa-home"></i><span>Home</span></a>
+        <a href="about.html"
+          ><i class="fas fa-question"></i><span>About</span></a
+        >
+        <a href="courses.html"
+          ><i class="fas fa-graduation-cap"></i><span>Courses</span></a
+        >
+        <a href="teachers.html"
+          ><i class="fas fa-chalkboard-user"></i><span>Teachers</span></a
+        >
+        <a href="contact.html"
+          ><i class="fas fa-headset"></i><span>Contact Us</span></a
+        >
+        <a href="chat.html"
+          ><i class="fas fa-chalkboard-user"></i
+            ></i><span>Discussion Board</span></a
+        >
+      </nav>
+    </div>
+
+    <section class="instDash">
+      <h1 class="heading">Chat with Your Instructor</h1>
+
+      <div class="chat-container">
+        <div class="chat-messages" id="chatMessages">
+          <div class="message user">
+            <img
+              src="img/pic-1.jpg"
+              class="image"
+              alt="User Profile"
+              style="width: 40px; border-radius: 50%; margin-right: 10px"
+            />
+            <span>Omkar Parab: Hi, I need help with my course.</span>
+          </div>
+          <div class="message instructor">
+            <img
+              src="img/instructor.jpg"
+              class="image"
+              alt="Instructor Profile"
+              style="width: 40px; border-radius: 50%; margin-right: 10px"
+            />
+            <span>Instructor: Sure! How can I assist you?</span>
+          </div>
+          <!-- Additional messages can be added here -->
+        </div>
+
+        <div class="chat-input">
+          <input
+            type="text"
+            id="chatInput"
+            placeholder="Type your message..."
+          />
+          <button id="sendMessage">Send</button>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      const chatMessages = document.getElementById("chatMessages");
+      const chatInput = document.getElementById("chatInput");
+      const sendMessageButton = document.getElementById("sendMessage");
+
+      sendMessageButton.addEventListener("click", function () {
+        const messageText = chatInput.value.trim();
+        if (messageText) {
+          const messageElement = document.createElement("div");
+          messageElement.className = "message user";
+          messageElement.innerHTML = `<img src="img/pic-1.jpg" class="image" alt="User Profile" style="width: 40px; border-radius: 50%; margin-right: 10px;"> 
+            <span>Omkar Parab: ${messageText}</span>`;
+          chatMessages.appendChild(messageElement);
+          chatInput.value = "";
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+          // Scroll to the bottom
+        }
+      });
+    </script>
+
+    <footer class="footer">
+      &copy; copyright @ 2022 by <span>mr. web designer</span> | All rights
+      reserved!
+    </footer>
+    <!-- Custom JS file link -->
+    <script src="js/Home.js"></script>
+  </body>
+</html>

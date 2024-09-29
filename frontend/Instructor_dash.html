@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Instructor Dashboard</title>
+
+    <!-- font awesome cdn link -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+    />
+
+    <!-- custom css file link -->
+    <link rel="stylesheet" href="css/Home.css" />
+  </head>
+  <body>
+    <header class="header">
+      <section class="flex">
+        <a href="home.html" class="logo">Learnfinity</a>
+
+        <form action="search.html" method="post" class="search-form">
+          <input
+            type="text"
+            name="search_box"
+            required
+            placeholder="search courses..."
+            maxlength="100"
+          />
+          <button type="submit" class="fas fa-search"></button>
+        </form>
+
+        <div class="icons">
+          <div id="menu-btn" class="fas fa-bars"></div>
+          <div id="search-btn" class="fas fa-search"></div>
+          <div id="user-btn" class="fas fa-user"></div>
+          <div id="toggle-btn" class="fas fa-sun"></div>
+        </div>
+
+        <div class="profile">
+          <img src="img/pic-1.jpg" class="image" alt="" />
+          <h3 class="name">Sanjay</h3>
+          <p class="role">Instructor</p>
+          <a href="profile.html" class="btn">view profile</a>
+        </div>
+      </section>
+    </header>
+
+    <div class="side-bar">
+      <div id="close-btn">
+        <i class="fas fa-times"></i>
+      </div>
+
+      <div class="profile">
+        <img src="img/pic-1.jpg" class="image" alt="" />
+        <h3 class="name">John Doe</h3>
+        <p class="role">Instructor</p>
+        <a href="profile.html" class="btn">view profile</a>
+      </div>
+
+      <nav class="navbar">
+        <a href="Instructor_dash.html"
+          ><i class="fas fa-home"></i><span>home</span></a
+        >
+        <a href="about.html"
+          ><i class="fas fa-question"></i><span>about</span></a
+        >
+        <a href="chat.html"
+          ><i class="fas fa-chalkboard-user"></i
+          ><span>Discussion Board</span></a
+        >
+        <a href="contact.html"
+          ><i class="fas fa-headset"></i><span>contact us</span></a
+        >
+        <a href="UploadCourse.html">
+          <i class="fas fa-upload"></i>
+          <span>Upload Course</span>
+        </a>
+      </nav>
+    </div>
+
+    <!-- Your Courses Section -->
+    <section class="courses">
+      <h1 class="heading">Your Courses</h1>
+      <div class="card-container">
+        <center>
+          <h2>Add course material</h2>
+          <input
+            type="file"
+            id="fileInput"
+            class="file-input"
+            multiple
+            accept=".mp4, .jpg, .jpeg, .png, .ppt, .pptx"
+            style="border: 3px; border-style: ridge; padding: 2"
+          />
+        </center>
+        <div id="fileList" class="file-list"></div>
+      </div>
+    </section>
+
+    <!-- View Courses Uploaded Section -->
+    <section class="view-courses">
+      <h1 class="heading">View Uploaded Courses</h1>
+      <div class="course-list">
+        <!-- Dynamically populated list of uploaded courses -->
+        <div class="course-item">
+          <h3>Course Title 1</h3>
+          <a href="view_course.html?id=1" class="inline-btn">View Course</a>
+        </div>
+
+        <div class="course-item">
+          <h3>Course Title 2</h3>
+          <a href="view_course.html?id=2" class="inline-btn">View Course</a>
+        </div>
+
+        <!-- Add more course items dynamically -->
+      </div>
+    </section>
+
+    <!-- Create Quiz Section -->
+    <section class="create-quiz">
+      <h1 class="heading">Create Quiz</h1>
+      <center>
+        <a href="create_quiz.html" class="inline-btn">Create a Quiz</a>
+      </center>
+    </section>
+
+    <footer class="footer">
+      &copy; copyright @ 2022 by <span>mr. web designer</span> | all rights
+      reserved!
+    </footer>
+
+    <!-- custom js file link -->
+    <script src="js/Home.js"></script>
+
+    <script>
+      // Script for handling file upload preview as in the previous example
+      const fileInput = document.getElementById("fileInput");
+      const fileList = document.getElementById("fileList");
+
+      fileInput.addEventListener("change", function (event) {
+        const files = event.target.files;
+
+        for (let i = 0; i < files.length; i++) {
+          const file = files[i];
+          const fileCard = document.createElement("div");
+          fileCard.className = "file-card";
+
+          const fileNameElement = document.createElement("p");
+          fileNameElement.className = "file-name";
+          fileNameElement.innerText = file.name;
+          fileCard.appendChild(fileNameElement);
+
+          const fileTypeElement = document.createElement("p");
+          fileTypeElement.className = "file-type";
+          fileTypeElement.innerText = `Type: ${file.type || "Unknown"}`;
+          fileCard.appendChild(fileTypeElement);
+
+          if (file.type.includes("image")) {
+            const img = document.createElement("img");
+            img.src = URL.createObjectURL(file);
+            img.alt = file.name;
+            img.style.width = "300px";
+            img.style.height = "300px";
+            img.className = "file-preview";
+            fileCard.appendChild(img);
+          } else if (file.type.includes("video")) {
+            const video = document.createElement("video");
+            video.src = URL.createObjectURL(file);
+            video.controls = true;
+            video.className = "file-preview";
+            video.style.width = "300px";
+            video.style.height = "300px";
+            fileCard.appendChild(video);
+          } else {
+            const otherFile = document.createElement("p");
+            otherFile.innerText = "Preview not available for this file type.";
+            fileCard.appendChild(otherFile);
+          }
+
+          fileList.appendChild(fileCard);
+        }
+
+        fileInput.value = "";
+      });
+    </script>
+  </body>
+</html>

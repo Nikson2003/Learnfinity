@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us</title>
+
+    <!-- font awesome cdn link  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+    />
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="css/Home.css" />
+  </head>
+  <body>
+    <header class="header">
+      <section class="flex">
+        <a href="home.html" class="logo">Educa.</a>
+
+        <form action="search.html" method="post" class="search-form">
+          <input
+            type="text"
+            name="search_box"
+            required
+            placeholder="search courses..."
+            maxlength="100"
+          />
+          <button type="submit" class="fas fa-search"></button>
+        </form>
+
+        <div class="icons">
+          <div id="menu-btn" class="fas fa-bars"></div>
+          <div id="search-btn" class="fas fa-search"></div>
+          <div id="user-btn" class="fas fa-user"></div>
+          <div id="toggle-btn" class="fas fa-sun"></div>
+        </div>
+
+        <div class="profile">
+          <img src="img/pic-1.jpg" class="image" alt="" />
+          <h3 class="name">Shaikh Anas</h3>
+          <p class="role">Student</p>
+          <a href="profile.html" class="btn">View Profile</a>
+          <div class="flex-btn">
+            <a href="login.html" class="option-btn">Login</a>
+            <a href="register.html" class="option-btn">Register</a>
+          </div>
+        </div>
+      </section>
+    </header>
+
+    <section class="contact">
+      <div class="row">
+        <div class="image">
+          <img src="img/contact-img.svg" alt="" />
+        </div>
+
+        <form id="contactForm" action="" method="post">
+          <h3>Get in Touch</h3>
+          <input
+            type="text"
+            placeholder="Enter your name"
+            name="name"
+            required
+            maxlength="50"
+            class="box"
+          />
+          <input
+            type="email"
+            placeholder="Enter your email"
+            name="email"
+            required
+            maxlength="50"
+            class="box"
+          />
+          <input
+            type="number"
+            placeholder="Enter your number"
+            name="number"
+            required
+            maxlength="50"
+            class="box"
+          />
+          <textarea
+            name="msg"
+            class="box"
+            placeholder="Enter your message"
+            required
+            maxlength="1000"
+            cols="30"
+            rows="10"
+          ></textarea>
+          <input
+            type="submit"
+            value="Send Message"
+            class="inline-btn"
+            name="submit"
+          />
+        </form>
+
+        <!-- Success message container -->
+        <div
+          id="successMessage"
+          style="display: none; color: green; margin-top: 10px"
+        >
+          Your message has been sent successfully!
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      &copy; copyright @ 2022 by <span>Mr. Web Designer</span> | all rights
+      reserved!
+    </footer>
+
+    <script>
+      // Wait for the DOM to be fully loaded
+      document.addEventListener("DOMContentLoaded", function () {
+        // Get the form element
+        const contactForm = document.getElementById("contactForm");
+        const successMessage = document.getElementById("successMessage");
+
+        // Add an event listener for form submission
+        contactForm.addEventListener("submit", function (event) {
+          // Prevent the default form submission behavior
+          event.preventDefault();
+
+          // Show the success message
+          successMessage.style.display = "block";
+
+          // You can use AJAX or fetch to send data to your server here
+          // For now, we'll just reset the form after a brief delay
+          setTimeout(() => {
+            contactForm.reset();
+            successMessage.style.display = "none"; // Hide the success message after resetting
+          }, 3000); // Hides the message after 3 seconds
+        });
+      });
+    </script>
+  </body>
+</html>
